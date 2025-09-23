@@ -109,6 +109,11 @@
 			height: 100%;
 		}
 		
+		.mobile-pdf-link {
+		  display: none;
+		  font-size: 14px;
+		  margin-top: 10px;
+		}
 	@media (max-width: 768px) {
 
 	  body {
@@ -165,16 +170,22 @@
 	  }
 
 	  .pdf-frame {
-		width: 100%;
+		<!-- width: 100%;
 		height: 400px;
 		overflow: auto;
 		border: none;
-		-webkit-overflow-scrolling: touch;
+		-webkit-overflow-scrolling: touch;-->
+		display: none;
 	  }
 
 	  .fullscreen-button {
-		top: -20px;
-		right: 0;
+		<!-- top: -20px;
+		right: 0;-->
+		display: none;
+	  }
+
+	  .mobile-pdf-link{
+	    display: block;
 	  }
 
 	  .copyright {
@@ -291,6 +302,7 @@
 		<iframe class="pdf-frame" id="pdfFrame1" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" scrolling="yes" allowfullscreen>This browser does not support PDFs. Please download the PDF:
 		<a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"> Download PDF</a>
 		</iframe>
+		<a class="mobile-pdf-link" href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" target="_blank">📄 View PDF</a>
 	</div>
 
 	<p class="circles2" style="font-weight: bold; font-size: 20px;">Curriculum Vitae</p>
@@ -300,6 +312,7 @@
 		<iframe class="pdf-frame" id="pdfFrame2" src="html_pdfs/cv_khang_đinh.pdf" scrolling="yes" allowfullscreen> This browser does not support PDFs. Please download the PDF:
 		<a href="html_pdfs/cv_khang_đinh.pdf"> Download PDF</a>
 		</iframe>
+		<a class="mobile-pdf-link" href="html_pdfs/cv_khang_đinh.pdf" target="_blank">📄 View CV PDF</a>
 	</div>
 	
 	<div style="position: fixed; top: 10px; right: 10px; z-index: 999;">
