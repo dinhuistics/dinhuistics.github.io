@@ -327,9 +327,9 @@
 		document.addEventListener("fullscreenchange", function () {
 		  document.querySelectorAll('.pdf-wrapper').forEach(wrapper => {
 			if (document.fullscreenElement === wrapper) {
-			  wrapper.classList.add("Toàn màn");
+			  wrapper.classList.add("fullscreen");
 			} else {
-			  wrapper.classList.remove("Toàn màn");
+			  wrapper.classList.remove("fullscreen");
 			}
 		  });
 		});
