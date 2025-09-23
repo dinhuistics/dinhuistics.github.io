@@ -166,7 +166,10 @@
 
 	  .pdf-frame {
 		width: 100%;
-		height: 300px;
+		height: 400px;
+		overflow: auto;
+		border: none;
+		-webkit-overflow-scrolling: touch;
 	  }
 
 	  .fullscreen-button {
@@ -268,7 +271,7 @@
 	<h1>Khang Đinh </h1>
 	<p class="ipa_name" style="font-size: 20px;"> /xæŋ/ /ɗɪŋ̆/</p>
 	<p class="name" style="font-size: 20px;">Sinh Viên Tiến Sỹ, <a href= "https://linguistics.ucla.edu/">Ngành Ngôn Ngữ Học UCLA</a></p>
-	<p style="text-align: justify;">Giọng nói được dùng như là một diễn suất để chuyển tải những ngụ ý có tính biểu tượng, kinh nghiệm, và danh tính như là âm thanh qua thời gian. Vì lý do này, tôi tò mò một cách sâu sắc về làm sao những cái yêu tố của tiếng nói có thể được trình bày một cách có hệ thống nhưng uyển chuyển. Như một cách thức, tôi được gợi hứng bởi sự thích ứng mà hiển hiện từ những cấu trúc song song trong âm nhạc và ngôn ngữ. Tôi đã dùng những công nghệ như sóng âm, danh mục, và vi tính trong việc nghiên cứu những ý tưởng này.</p>
+	<p style="text-align: justify;">Giọng nói được dùng như là một diễn suất để chuyển tải những ngụ ý có tính biểu tượng, kinh nghiệm, và danh tính như là âm thanh qua thời gian. Vì lý do này, tôi cực kỳ thắc mắc làm sao những cái yêu tố của tiếng nói có thể được trình bày một cách có hệ thống nhưng vẫn uyển chuyển. Như một cách thức, tôi được gợi cảm hứng bởi sự thích ứng mà hiển hiện từ những cấu trúc song song trong âm nhạc và ngôn ngữ. Tôi đã dùng những công nghệ như sóng âm, danh mục, và vi tính trong việc nghiên cứu những ý tưởng này.</p>
 	<p style="text-align: justify;">Tôi có bằng cử nhân từ trường đại học UC Santa Barbara (UCSB) trong năm 2025. Ở UCSB, tôi đã làm việc trong nhiều đề án với những đề tài như âm điệu ngôn ngữ đa dạng, những từ biểu ngữ trong tiếng Việt, sự tương tác giữa thanh điệu:giai điệu bài hát, và ngôn ngữ của chính trị gia trên mạng xã hội. Xin cứ tự nhiên nhắn tin cho tôi nếu bạn muốn thảo luận về bất cứ ý kiến nào! <br> Những câu hỏi này bao gồm một lĩnh vực quá bao la đến nỗi chúng ta nên quyến khích sự hợp tác.</p>
 	<div class="floatfix"></div>
 	<br>
@@ -286,8 +289,9 @@
 	<p class="circles_desc" style="text-align: justify;"> Tôi đã phân tích mối quan hệ giữa thanh điệu <br> của những lời bài hát và giai điệu tương ứng <br> của nó trong những nhạc V-Pop.</p> 
 	<div class="pdf-wrapper pdf1" id="pdfWrapper1">
 		<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper1')">⛶ Toàn màn</button>
-		<iframe class="pdf-frame" id="pdfFrame" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf">Trình duyệt nay không ủng hộ những PDF. Làm ơn tải về PDF này:
+		<iframe class="pdf-frame" id="pdfFrame1" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" scrolling="yes" allowfullscreen>Trình duyệt nay không ủng hộ những PDF. Làm ơn tải về PDF này:
 		<a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"> Tải về PDF</a>
+		<a class="mobile-pdf-link" href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" target="_blank">📄 Xem PDF</a>
 		</iframe>
 	</div>
 
@@ -295,8 +299,9 @@
 	<p class="circles_desc2" style="text-align: justify;"> Một danh sách đầy đủ về những công việc <br> của tôi với phương tiện truyền thông có thể <br> được tìm đây qua những liên kết.</p>
 	<div class="pdf-wrapper pdf2" id="pdfWrapper2">
 		<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper2')">⛶ Toàn màn</button>
-		<iframe class="pdf-frame" id="pdfFrame" src="html_pdfs/cv_khang_đinh.pdf"> Trình duyệt nay không ủng hộ những PDF. Làm ơn tải về PDF này:
+		<iframe class="pdf-frame" id="pdfFrame2" src="html_pdfs/cv_khang_đinh.pdf" scrolling="yes" allowfullscreen> Trình duyệt nay không ủng hộ những PDF. Làm ơn tải về PDF này:
 		<a href="html_pdfs/cv_khang_đinh.pdf"> Tải về PDF</a>
+		<a class="mobile-pdf-link" href="html_pdfs/cv_khang_đinh.pdf" target="_blank">📄 Xem PDF</a>
 		</iframe>
 	</div>
 	
@@ -314,6 +319,8 @@
 			wrapper.webkitRequestFullscreen();
 			} else if (wrapper.msRequestFullscreen) {
 			wrapper.msRequestFullscreen();
+			} else{
+			alert("Chế độ toàn màn không được ủng hộ trong trình duyệt này." 
 			}
 		}
 
