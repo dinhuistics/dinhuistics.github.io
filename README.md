@@ -1,2 +1,2 @@
-# dinhuistics.github.io
+# đinhuistics
 tin treo trên đinh
