@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>đinhuistics</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="HTML, CSS, linguistics, Khang, Đinh, Dinh, Khang Dinh, phonetics, prosody, musicolinguistics">
+	<meta name="description" content="website for Khang Đinh's linguistics research">
+	<style>
+		*{
+		box-sizing: border-box;
+		max-width: 100%;
+		}
+		.pp{
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			float: left;
+			margin-right: 30px;
+			object-fit: cover;
+		}
+		.floatfix{
+			clear: both;
+		}
+		.heading{
+			margin-top: -29px;
+		}
+		body{
+			background-color: #E4EDE4;
+		}
+		.ipa_name{
+		margin-top: -20px;
+		word-spacing: 52px;
+		}
+		.moved_text{
+			position: relative;
+			left: 228px;
+		}
+		.circles{
+		position: absolute;
+		top: 275px;
+		left: 395px;
+		}
+		.circles_desc{
+		position: absolute;
+		top: 310px;
+		left: 345px;
+		}
+		.circles2{
+		position: absolute;
+		top: 275px;
+		left: 895px;
+		}
+		.circles_desc2{
+		position: absolute;
+		top: 310px;
+		left: 800px;
+		}
+		.copyright{
+		position: absolute;
+		top: 515px;
+		left: 1160px;
+		}
+		.pdf-wrapper{
+		position: absolute;
+		top: 600px;
+		left: 400px;
+		border: none;
+		}
+		.pdf-frame {
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+		.pdf1{
+		top: 390px;
+		left: 345px;
+		}
+		.pdf2{
+		top: 390px;
+		left: 800px;
+		}
+
+		.fullscreen-button {
+			position: absolute;
+			top: -22px;
+			right: 0px;
+			z-index: 10;
+			background-color: rgba(0, 0, 0, 0.6);
+			color: white;
+			border: none;
+			padding: 6px 10px;
+			font-size: 10px;
+			cursor: pointer;
+			border-radius: 4px;
+			height: 20px;
+			padding-top: 3px;
+		}
+		.fullscreen {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: 9999;
+		}
+
+		.fullscreen .pdf-frame {
+			height: 100%;
+		}
+		
+	@media (max-width: 768px) {
+
+	  body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		overflow-y: auto;
+		height: auto;
+	  }
+
+	  .pp {
+		float: none;
+		display: block;
+		margin: 0 auto 20px;
+	  }
+
+	  .ipa_name,
+	  h1,
+	  p {
+		text-align: center;
+		margin: 10px 15px;
+	  }
+
+	  .moved_text {
+		position: static !important;
+		display: inline !important;
+		left: auto !important;
+		margin-left: 0 !important;
+		text-align: inherit !important;
+	  }
+
+	  .circles,
+	  .circles2,
+	  .circles_desc,
+	  .circles_desc2,
+	  .pdf-wrapper,
+	  .pdf1,
+	  .pdf2,
+	  .copyright,
+	  .moved_text{
+		position: relative !important;
+		top: auto !important;
+		left: auto !important;
+		right: auto !important;
+		margin: 20px auto;
+		text-align: center;
+	  }
+
+	  .pdf-wrapper {
+		position: relative;
+		width: 90%;
+		max-width: 600px;
+		margin: 20px auto;
+	  }
+
+	  .pdf-frame {
+		width: 100%;
+		height: 300px;
+	  }
+
+	  .fullscreen-button {
+		top: -20px;
+		right: 0;
+	  }
+
+	  .copyright {
+		position: relative;
+		text-align: center;
+		margin: 30px auto;
+	  }
+	}
+
+	@media (max-width: 1024px) and (min-width: 769px) {
+	  body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		overflow-x: hidden;
+		height: auto;
+	  }
+
+	  .pp {
+		float: none;
+		display: block;
+		margin: 0 auto 20px;
+	  }
+
+	  .ipa_name,
+	  .name,
+	  p,
+	  .moved_text {
+		text-align: center;
+		margin: 10px 20px;
+	  }
+
+	  .moved_text {
+		position: static;
+		left: auto;
+		margin-left: 0;
+	  }
+
+	  .circles,
+	  .circles2,
+	  .circles_desc,
+	  .circles_desc2,
+	  .pdf-wrapper,
+	  .pdf1,
+	  .pdf2,
+	  .copyright {
+		position: relative;
+		top: auto;
+		left: auto;
+		margin: 20px auto;
+		text-align: center;
+	  }
+
+	  .pdf-frame {
+		width: 100%;
+		max-width: 100%;
+		height: 350px;
+	  }
+	}
+
+	@media (min-width: 1025px) and (max-width: 1200px) {
+	  .pdf-frame {
+		width: 95%;
+		height: 400px;
+	  }
+
+	  .pdf-wrapper {
+		left: auto;
+		margin: 20px auto;
+		position: relative;
+	  }
+
+	  .circles,
+	  .circles2,
+	  .circles_desc,
+	  .circles_desc2 {
+		left: auto;
+		position: relative;
+		text-align: center;
+		margin: 10px auto;
+	  }
+
+	  .moved_text {
+		position: relative;
+		left: 50px;
+	  }
+	}
+	</style>
+</head>
+<body>
+	<a href="html_images/profilepic.jpg">
+		<img class="pp" src="html_images/profilepic.jpg" alt="Khang Đinh ăn cơm tấm từ quán vỉa hè trong Quận 3, Hồ Chì Minh ở Việt Nam.">
+		</a>
+	<h1>Khang Đinh </h1>
+	<p class="ipa_name" style="font-size: 20px;"> /xæŋ/ /ɗɪŋ̆/</p>
+	<p class="name" style="font-size: 20px;">Sinh Viên Tiến Sỹ, <a href= "https://linguistics.ucla.edu/">Ngành Ngôn Ngữ Học UCLA</a></p>
+	<p style="text-align: justify;">Giọng nói được dùng như là một diễn suất để chuyển tải những ngụ ý có tính biểu tượng, kinh nghiệm, và danh tính như là âm thanh qua thời gian. Vì lý do này, tôi tò mò một cách sâu sắc về làm sao những cái yêu tố của tiếng nói có thể được trình bày một cách có hệ thống nhưng uyển chuyển. Như một cách thức, tôi được gợi hứng bởi sự thích ứng mà hiển hiện từ những cấu trúc song song trong âm nhạc và ngôn ngữ. Tôi đã dùng những công nghệ như sóng âm, danh mục, và vi tính trong việc nghiên cứu những ý tưởng này.</p>
+	<p style="text-align: justify;">Tôi có bằng cử nhân từ trường đại học UC Santa Barbara (UCSB) trong năm 2025. Ở UCSB, tôi đã làm việc trong nhiều đề án với những đề tài như âm điệu ngôn ngữ đa dạng, những từ biểu ngữ trong tiếng Việt, sự tương tác giữa thanh điệu:giai điệu bài hát, và ngôn ngữ của chính trị gia trên mạng xã hội. Xin cứ tự nhiên nhắn tin cho tôi nếu bạn muốn thảo luận về bất cứ ý kiến nào! <br> Những câu hỏi này bao gồm một lĩnh vực quá bao la đến nỗi chúng ta nên quyến khích sự hợp tác.</p>
+	<div class="floatfix"></div>
+	<br>
+	<h2 class="heading" style="font-size: 18px;">Những Sở Thích Nghiên Cứu: </h2>
+	<p style="font-size: 15px;">Ngữ âm</p>
+	<p style="font-size: 15px;">Âm điệu</p>
+	<p style="font-size: 15px;">Việt ngữ</p>
+	<p style="font-size: 15px;">Âm nhạc ngôn ngữ học</p><br>
+	<h2 class="heading" style="font-size: 18px;">Liên hệ:</h2>
+	<p style="font-size: 15px;"> Email: <a href="mailto:dinhuistics@ucla.edu">dinhuistics@ucla.edu</a></p>
+	<p style="font-size: 15px;"> Zoom: <a href="https://ucla.zoom.us/my/khang">https://ucla.zoom.us/my/khang</a></p>
+	<!-- <a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"><p class="circles" style="font-weight: bold; font-size: 25px;">V-Pop Project</p></a> -->
+
+	<p class="circles" style="font-weight: bold; font-size: 20px;">Tông Việt ~ Điệu Việt</p>
+	<p class="circles_desc" style="text-align: justify;"> Tôi đã phân tích mối quan hệ giữa thanh điệu <br> của những lời bài hát và giai điệu tương ứng <br> của nó trong những nhạc V-Pop.</p> 
+	<div class="pdf-wrapper pdf1" id="pdfWrapper1">
+		<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper1')">⛶ Toàn màn</button>
+		<iframe class="pdf-frame" id="pdfFrame" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf">Trình duyệt nay không ủng hộ những PDF. Làm ơn tải về PDF này:
+		<a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"> Tải về PDF</a>
+		</iframe>
+	</div>
+
+	<p class="circles2" style="font-weight: bold; font-size: 20px;">Sơ yếu lý lịch</p>
+	<p class="circles_desc2" style="text-align: justify;"> Một danh sách đầy đủ về những công việc <br> của tôi với phương tiện truyền thông có thể <br> được tìm đây qua những liên kết.</p>
+	<div class="pdf-wrapper pdf2" id="pdfWrapper2">
+		<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper2')">⛶ Toàn màn</button>
+		<iframe class="pdf-frame" id="pdfFrame" src="html_pdfs/cv_khang_đinh.pdf"> Trình duyệt nay không ủng hộ những PDF. Làm ơn tải về PDF này:
+		<a href="html_pdfs/cv_khang_đinh.pdf"> Tải về PDF</a>
+		</iframe>
+	</div>
+	
+	<div style="position: fixed; top: 10px; right: 10px; z-index: 999;">
+	  <a href="dinhuistics.html">🇺🇸 English</a> | <a href="dinhuistics_vi.html">🇻🇳 Tiếng Việt</a>
+	</div>
+
+	<script>
+		function enterFullscreen(pdfWrapper1) {
+			const wrapper = document.getElementById(pdfWrapper1);
+			
+			if (wrapper.requestFullscreen) {
+				wrapper.requestFullscreen();
+			} else if (wrapper.webkitRequestFullscreen) {
+			wrapper.webkitRequestFullscreen();
+			} else if (wrapper.msRequestFullscreen) {
+			wrapper.msRequestFullscreen();
+			}
+		}
+
+		document.addEventListener("fullscreenchange", function () {
+		  document.querySelectorAll('.pdf-wrapper').forEach(wrapper => {
+			if (document.fullscreenElement === wrapper) {
+			  wrapper.classList.add("Toàn màn");
+			} else {
+			  wrapper.classList.remove("Toàn màn");
+			}
+		  });
+		});
+	</script>
+	
+	<!-- <audio src="html_audio/foot_audio.wav" controls></audio> -->
+	<p class="copyright" style="font-size: 12px;">&copy; 2025 Khang Đinh </p>
+</body>
+</html>
+	
