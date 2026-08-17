@@ -7,94 +7,152 @@
 	<meta name="keywords" content="HTML, CSS, dinhuistics, linguistics, Khang, Đinh, Dinh, Khang Dinh, phonetics, prosody, musicolinguistics">
 	<meta name="description" content="website for Khang Đinh's linguistics research">
 	<style>
-		*{
-		box-sizing: border-box;
-		max-width: 100%;
+		* {
+			box-sizing: border-box;
 		}
-		.pp{
-			width: 200px;
-			height: 200px;
-			border-radius: 50%;
-			float: left;
-			margin-right: 30px;
-			object-fit: cover;
-		}
-		.floatfix{
-			clear: both;
-		}
-		.heading{
-			margin-top: -2px;
-		}
-		body{
+		
+		/* Locks the screen to exactly 1 window height and hides global scrollbars */
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			width: 100vw;
+			overflow: hidden;
 			background-color: #E4EDE4;
+			font-family: "Times New Roman", Times, Georgia, serif;
 		}
-		.ipa_name{
-		margin-top: -20px;
-		word-spacing: 42px;
+
+		/* Centered single-page wrapper */
+		.site-container {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			max-width: 1250px;
+			height: 100%;
+			margin: 0 auto;
+			padding: 15px 25px 5px 25px;
 		}
-		.moved_text{
+
+		/* Header Profile Section */
+		.profile-section {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: 10px;
+			flex-shrink: 0; /* Prevents the top section from compressing */
+		}
+		.pp {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			margin-right: 25px;
+			object-fit: cover;
+			flex-shrink: 0;
+		}
+		.profile-text {
+			flex-grow: 1;
+		}
+		.profile-text h1 {
+			margin: 0 0 2px 0;
+			font-size: 28px;
+		}
+		.ipa_name {
+			margin: 0 0 8px 0;
+			font-size: 18px;
+			color: #444;
+		}
+		.bio-text {
+			text-align: justify;
+			line-height: 1.35;
+			margin: 0 0 8px 0;
+			font-size: 15px;
+		}
+
+		/* Main Dynamic Layout Content Split */
+		.main-layout {
+			display: flex;
+			gap: 30px;
+			flex: 1;          /* Automatically takes up all remaining vertical space */
+			min-height: 0;    /* CRITICAL: Allows flex items to shrink below text heights */
+			margin-bottom: 5px;
+		}
+
+		/* Sidebar layout column */
+		.sidebar {
+			width: 200px;
+			flex-shrink: 0;
+		}
+		.heading {
+			font-size: 18px;
+			margin: 10px 0 5px 0;
+			border-bottom: 1px solid #b5c4b5;
+			padding-bottom: 2px;
+		}
+		.sidebar p {
+			font-size: 15px;
+			margin: 5px 0;
+		}
+
+		/* Right Side Content Grid Area */
+		.content-area {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			min-height: 0;
+		}
+
+		/* Layout grid that auto-stretches height to fit the viewport */
+		.cards-grid {
+			display: flex;
+			gap: 25px;
+			height: 100%;
+			min-height: 0;
+		}
+		.card {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			min-height: 0;
+		}
+		.card-title {
+			font-weight: bold;
+			font-size: 18px;
+			margin: 0 0 5px 0;
+			text-align: center;
+		}
+		.card-desc {
+			text-align: justify;
+			font-size: 14px;
+			line-height: 1.3;
+			margin: 0 0 10px 0;
+		}
+
+		/* PDF Framework adjusts dynamically within its card space */
+		.pdf-wrapper {
 			position: relative;
-			left: 228px;
-		}
-		.circles{
-		position: absolute;
-		top: 275px;
-		left: 395px;
-		}
-		.circles_desc{
-		position: absolute;
-		top: 310px;
-		left: 345px;
-		}
-		.circles2{
-		position: absolute;
-		top: 275px;
-		left: 870px;
-		}
-		.circles_desc2{
-		position: absolute;
-		top: 310px;
-		left: 800px;
-		}
-		.copyright{
-		position: absolute;
-		top: 515px;
-		left: 1160px;
-		}
-		.pdf-wrapper{
-		position: absolute;
-		top: 600px;
-		left: 400px;
-		border: none;
+			width: 100%;
+			flex: 1;          /* Stretches the preview window to fill remaining card space */
+			min-height: 0;    /* Prevents PDF viewer layout overflow */
+			border: none;
 		}
 		.pdf-frame {
 			width: 100%;
 			height: 100%;
 			border: none;
 		}
-		.pdf1{
-		top: 390px;
-		left: 345px;
-		}
-		.pdf2{
-		top: 390px;
-		left: 800px;
-		}
 
 		.fullscreen-button {
 			position: absolute;
-			top: -22px;
-			right: 0px;
+			top: 8px;
+			right: 8px;
 			z-index: 10;
 			background-color: rgba(0, 0, 0, 0.6);
 			color: white;
 			border: none;
-			padding: 6px 10px;
+			padding: 4px 8px;
 			font-size: 10px;
 			cursor: pointer;
 			border-radius: 4px;
-			height: 20px;
-			padding-top: 3px;
+			font-family: sans-serif;
 		}
 		.fullscreen {
 			position: fixed;
@@ -104,248 +162,153 @@
 			height: 100vh;
 			z-index: 9999;
 		}
-
 		.fullscreen .pdf-frame {
 			height: 100%;
 		}
 		
 		.mobile-pdf-link {
-		  display: none;
-		  font-size: 14px;
-		  margin-top: 10px;
+			display: none;
+			font-size: 14px;
+			margin-top: 5px;
+			text-align: center;
 		}
-	@media (max-width: 768px) {
 
-	  body {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		overflow-y: auto;
-		height: auto;
-	  }
+		/* Compact Footer */
+		.copyright {
+			text-align: center;
+			font-size: 13px;
+			color: #555;
+			flex-shrink: 0;
+			padding: 5px 0;
+		}
 
-	  .pp {
-		float: none;
-		display: block;
-		margin: 0 auto 20px;
-	  }
-
-	  .ipa_name,
-	  h1,
-	  p {
-		text-align: center;
-		margin: 10px 15px;
-	  }
-
-	  .moved_text {
-		position: static !important;
-		display: inline !important;
-		left: auto !important;
-		margin-left: 0 !important;
-		text-align: inherit !important;
-	  }
-
-	  .circles,
-	  .circles2,
-	  .circles_desc,
-	  .circles_desc2,
-	  .pdf-wrapper,
-	  .pdf1,
-	  .pdf2,
-	  .copyright,
-	  .moved_text{
-		position: relative !important;
-		top: auto !important;
-		left: auto !important;
-		right: auto !important;
-		margin: 20px auto;
-		text-align: center;
-	  }
-
-	  .pdf-wrapper {
-		position: relative;
-		width: 90%;
-		max-width: 600px;
-		margin: 20px auto;
-	  }
-
-	  .pdf-frame {
-		<!-- width: 100%;
-		height: 400px;
-		overflow: auto;
-		border: none;
-		-webkit-overflow-scrolling: touch;-->
-		display: none;
-	  }
-
-	  .fullscreen-button {
-		<!-- top: -20px;
-		right: 0;-->
-		display: none;
-	  }
-
-	  .mobile-pdf-link{
-	    display: block;
-	  }
-
-	  .copyright {
-		position: relative;
-		text-align: center;
-		margin: 30px auto;
-	  }
-	}
-
-	@media (max-width: 1024px) and (min-width: 769px) {
-	  body {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		overflow-x: hidden;
-		height: auto;
-	  }
-
-	  .pp {
-		float: none;
-		display: block;
-		margin: 0 auto 20px;
-	  }
-
-	  .ipa_name,
-	  .name,
-	  p,
-	  .moved_text {
-		text-align: center;
-		margin: 10px 20px;
-	  }
-
-	  .moved_text {
-		position: static;
-		left: auto;
-		margin-left: 0;
-	  }
-
-	  .circles,
-	  .circles2,
-	  .circles_desc,
-	  .circles_desc2,
-	  .pdf-wrapper,
-	  .pdf1,
-	  .pdf2,
-	  .copyright {
-		position: relative;
-		top: auto;
-		left: auto;
-		margin: 20px auto;
-		text-align: center;
-	  }
-
-	  .pdf-frame {
-		width: 100%;
-		max-width: 100%;
-		height: 350px;
-	  }
-	}
-
-	@media (min-width: 1025px) and (max-width: 1200px) {
-	  .pdf-frame {
-		width: 95%;
-		height: 400px;
-	  }
-
-	  .pdf-wrapper {
-		left: auto;
-		margin: 20px auto;
-		position: relative;
-	  }
-
-	  .circles,
-	  .circles2,
-	  .circles_desc,
-	  .circles_desc2 {
-		left: auto;
-		position: relative;
-		text-align: center;
-		margin: 10px auto;
-	  }
-
-	  .moved_text {
-		position: relative;
-		left: 50px;
-	  }
-	}
+		/* Mobile Fallbacks: If screen gets too narrow/small, scroll is allowed only on mobile */
+		@media (max-width: 768px) {
+			html, body {
+				overflow-y: auto;
+				height: auto;
+			}
+			.site-container {
+				height: auto;
+			}
+			.profile-section {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+			.pp {
+				margin-right: 0;
+				margin-bottom: 15px;
+			}
+			.main-layout {
+				flex-direction: column;
+			}
+			.sidebar {
+				width: 100%;
+				text-align: center;
+			}
+			.cards-grid {
+				flex-direction: column;
+				height: auto;
+			}
+			.pdf-frame, .fullscreen-button {
+				display: none;
+			}
+			.pdf-wrapper {
+				height: auto;
+			}
+			.mobile-pdf-link {
+				display: block;
+			}
+		}
 	</style>
 </head>
 <body>
-	<a href="html_images/profilepic.jpg">
-		<img class="pp" src="html_images/profilepic.jpg" alt="Khang Đinh eating cơm tấm from a street vendor in District 3, Hồ Chí Mình City in Vietnam.">
+
+<div class="site-container">
+
+	<!-- Header Profile Section -->
+	<header class="profile-section">
+		<a href="html_images/profilepic.jpg">
+			<img class="pp" src="html_images/profilepic.jpg" alt="Khang Đinh eating cơm tấm.">
 		</a>
-	<h1>Khang Đinh </h1>
-	<p class="ipa_name" style="font-size: 20px;"> [kxaŋ] [ɗɪŋ̆]</p>
-	<p class="name" style="font-size: 20px;">PhD Student, <a href= "https://linguistics.ucla.edu/">UCLA Department of Linguistics</a></p>
-	<p style="text-align: justify;">The spoken voice functions as a performance that transfers symbolic cues, experience, and identity as sound across time. By this reasoning, I am radically curious about how the features of speech can be systematically yet multivocally represented. As an avenue, I am intrigued by adaptations that arise from parallel structures in music and language. Central to my work is the notion of how different language modalities can cast light on grammatical resourcefulness. </p>
-	<p style="text-align: justify;">I got my BA from UC Santa Barbara (UCSB) in 2025. At UCSB, I worked on various projects with topics in typological speech rhythm, Vietnamese <span class="moved_text">demonstratives, lexical tone:song melody interaction, and politicians' language on social media. Feel free to message me if you would like to discuss any ideas! <br> These questions cover too vast a domain to not encourage collaboration. </span></p>
-	<div class="floatfix"></div>
-	<h2 class="heading" style="font-size: 18px;">Research Interests: </h2>
-	<p style="font-size: 15px;">Phonetics</p>
-	<p style="font-size: 15px;">Prosody</p>
-	<p style="font-size: 15px;">Vietnamese</p>
-	<p style="font-size: 15px;">Musicolinguistics</p>
-	<h2 class="heading" style="font-size: 18px;">Contact:</h2>
-	<p style="font-size: 14px;"> Email: <a href="mailto:dinhuistics@ucla.edu">dinhuistics@ucla.edu</a></p>
-	<p style="font-size: 14px;"> Zoom: <a href="https://ucla.zoom.us/my/khang">https://ucla.zoom.us/my/khang</a></p>
-	<!-- <a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"><p class="circles" style="font-weight: bold; font-size: 25px;">V-Pop Project</p></a> -->
-
-	<p class="circles" style="font-weight: bold; font-size: 20px;">Việt Tones ~ Việt Tunes</p>
-	<p class="circles_desc" style="text-align: justify;">I analyzed the relationship between the lexical <br> tone of lyrics and their corresponding melody <br> in Vietnamese pop songs.</p> 
-	<div class="pdf-wrapper pdf1" id="pdfWrapper1">
-		<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper1')">⛶ Fullscreen</button>
-		<iframe class="pdf-frame" id="pdfFrame1" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" scrolling="yes" allowfullscreen>This browser does not support PDFs. Please download the PDF:
-		<a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"> Download PDF</a>
-		</iframe>
-		<a class="mobile-pdf-link" href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" target="_blank">📄 ^ View PDF</a>
-	</div>
-
-	<p class="circles2" style="font-weight: bold; font-size: 20px;">Curriculum Vitae</p>
-	<p class="circles_desc2" style="text-align: justify;"> A full list of my work with media attachments <br> can be found in the CV below as links.</p>
-	<div class="pdf-wrapper pdf2" id="pdfWrapper2">
-		<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper2')">⛶ Fullscreen</button>
-		<iframe class="pdf-frame" id="pdfFrame2" src="html_pdfs/cv_ngan.pdf" scrolling="yes" allowfullscreen> This browser does not support PDFs. Please download the PDF:
-		<a href="html_pdfs/cv_ngan.pdf"> Download PDF</a>
-		</iframe>
-		<a class="mobile-pdf-link" href="html_pdfs/cv_ngan.pdf" target="_blank">📄 ^ View PDF</a>
-	</div>
-	
-	<div style="position: fixed; top: 10px; right: 10px; z-index: 999;">
-	  <p style="font-size: 12px;"><a href="index.html">English</a> | <a href="dinhuistics.html">Tiếng Việt</a></p>
-	</div>
-
-
-	<script>
-		function enterFullscreen(pdfWrapper1) {
-			const wrapper = document.getElementById(pdfWrapper1);
+		<div class="profile-text">
+			<h1>Khang Đinh</h1>
+			<p class="ipa_name">[kxɑŋ] [ɗɪŋ̆]</p>
+			<p style="font-size: 18px; margin: 0 0 8px 0;">PhD Student, <a href="https://ucla.edu">UCLA Department of Linguistics</a></p>
 			
-			if (wrapper.requestFullscreen) {
-				wrapper.requestFullscreen();
-			} else if (wrapper.webkitRequestFullscreen) {
-			wrapper.webkitRequestFullscreen();
-			} else if (wrapper.msRequestFullscreen) {
-			wrapper.msRequestFullscreen();
-			} else{
-			alert("Fullscreen mode is not supported in this browser. Please click the link below to view this PDF in a separate page.")
-			}
-		}
+			<p class="bio-text">The spoken voice functions as a performance that transfers symbolic cues, experience, and identity as sound across time. By this reasoning, I am radically curious about how the features of speech can be systematically yet multivocally represented. As an avenue, I am intrigued by adaptations that arise from parallel structures in music and language. Central to my work is the notion of how different language modalities can cast light on grammatical resourcefulness.</p>
+			
+			<p class="bio-text">I got my BA from UC Santa Barbara (UCSB) in 2025. At UCSB, I worked on various projects with topics in typological speech rhythm, Vietnamese demonstratives, lexical tone:song melody interaction, and politicians' language on social media. Feel free to message me if you would like to discuss any ideas! <br> These questions cover too vast a domain to not encourage collaboration.</p>
+		</div>
+	</header>
 
-		document.addEventListener("fullscreenchange", function () {
-		  document.querySelectorAll('.pdf-wrapper').forEach(wrapper => {
-			if (document.fullscreenElement === wrapper) {
-			  wrapper.classList.add("fullscreen");
-			} else {
-			  wrapper.classList.remove("fullscreen");
-			}
-		  });
-		});
-	</script>
-	<p class="copyright" style="font-size: 12px;">&copy; 2026 Khang Đinh </p> 
+	<!-- Main Multi-Column Single Page Layout -->
+	<div class="main-layout">
+		
+		<!-- Left Info Sidebar Container -->
+		<aside class="sidebar">
+			<h2 class="heading">Research Interests:</h2>
+			<p>Phonetics</p>
+			<p>Prosody</p>
+			<p>Vietnamese</p>
+			<p>Musicolinguistics</p>
+			
+			<h2 class="heading">Contact:</h2>
+			<p>Email: <a href="mailto:dinhuistics@ucla.edu">dinhuistics@ucla.edu</a></p>
+			<p>Zoom: <a href="https://zoom.us">https://zoom.us</a></p>
+		</aside>
+
+		<!-- Right Content Grid Container -->
+		<main class="content-area">
+			<div class="cards-grid">
+				
+				<!-- Card 1: V-Pop -->
+				<div class="card">
+					<p class="card-title">Việt Tones ~ Việt Tunes</p>
+					<p class="card-desc">I analyzed the relationship between the lexical tone of lyrics and their corresponding melody in Vietnamese pop songs.</p> 
+					<div class="pdf-wrapper" id="pdfWrapper1">
+						<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper1')">⛶ Fullscreen</button>
+						<iframe class="pdf-frame" id="pdfFrame1" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" scrolling="yes" allowfullscreen>This browser does not support PDFs. Please download the PDF:
+						<a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"> Download PDF</a>
+						</iframe>
+						<a class="mobile-pdf-link" href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" target="_blank">📄 View PDF</a>
+					</div>
+				</div>
+
+				<!-- Card 2: CV -->
+				<div class="card">
+					<p class="card-title">Curriculum Vitae</p>
+					<p class="card-desc">A full list of my work with media attachments can be found in the CV below.</p>
+					<div class="pdf-wrapper" id="pdfWrapper2">
+						<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper2')">⛶ Fullscreen</button>
+						<iframe class="pdf-frame" id="pdfFrame2" src="html_pdfs/CV_Filename_Placeholder.pdf" scrolling="yes" allowfullscreen>This browser does not support PDFs. Please download the PDF:
+						<a href="html_pdfs/CV_Filename_Placeholder.pdf"> Download PDF</a>
+						</iframe>
+						<a class="mobile-pdf-link" href="html_pdfs/CV_Filename_Placeholder.pdf" target="_blank">📄 View CV PDF</a>
+					</div>
+				</div>
+
+			</div>
+		</main>
+	</div>
+
+	<!-- Bottom Page Footer -->
+	<footer class="copyright">
+		&copy; 2026 Khang Đinh
+	</footer>
+
+</div>
+
+<script>
+	function enterFullscreen(id) {
+		var el = document.getElementById(id);
+		if (el.classList.contains('fullscreen')) {
+			el.classList.remove('fullscreen');
+		} else {
+			el.classList.add('fullscreen');
+		}
+	}
+</script>
 </body>
 </html>
-	
