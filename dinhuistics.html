@@ -11,7 +11,6 @@
 			box-sizing: border-box;
 		}
 		
-		/* Khóa màn hình chính xác theo 1 chiều cao viewport để ẩn thanh cuộn */
 		html, body {
 			margin: 0;
 			padding: 0;
@@ -22,77 +21,69 @@
 			font-family: "Times New Roman", Times, Georgia, serif;
 		}
 
-		/* Khung chứa trang đơn căn giữa */
 		.site-container {
 			display: flex;
 			flex-direction: column;
 			width: 100%;
-			max-width: 1250px;
-			height: 100%;
+			max-width: 1300px;
+			height: 100vh;
 			margin: 0 auto;
-			padding: 15px 25px 5px 25px;
+			padding: 2vh 2vw 1vh 2vw;
+			position: relative;
+			container-type: inline-size;
 		}
 
-		/* Bố cục Phần Hồ sơ Đầu trang */
+		/* 📊 Boosted Font Sizing Engine Rules */
+		h1 { font-size: clamp(24px, 2.6cqi, 36px); margin: 0; }
+		.ipa_name { font-size: clamp(15px, 1.5cqi, 20px); margin: 0; color: #444; }
+		.sub-title { font-size: clamp(17px, 1.7cqi, 22px); margin: 12px 0 8px 0; } /* Added 12px margin-top to remove smush */
+		.bio-text { font-size: clamp(14px, 1.35cqi, 17px); text-align: justify; line-height: 1.45; margin: 0 0 10px 0; }
+		.heading { font-size: clamp(16px, 1.6cqi, 20px); margin: 12px 0 5px 0; border-bottom: 1px solid #b5c4b5; padding-bottom: 2px; }
+		.sidebar p { font-size: clamp(14px, 1.3cqi, 16px); margin: 4px 0; }
+		.card-title { font-weight: bold; font-size: clamp(16px, 1.6cqi, 20px); margin: 0 0 5px 0; text-align: center; }
+		.card-desc { text-align: justify; font-size: clamp(13px, 1.2cqi, 15px); line-height: 1.35; margin: 0 0 8px 0; }
+
+		.lang-toggle {
+			position: absolute;
+			top: 20px;
+			right: 25px;
+			font-size: 15px;
+			font-family: sans-serif;
+			z-index: 100;
+		}
+
 		.profile-section {
 			display: flex;
 			align-items: flex-start;
-			margin-bottom: 10px;
-			flex-shrink: 0; /* Ngăn phần trên cùng bị nén */
+			margin-bottom: 12px;
+			flex-shrink: 0;
+			padding-right: 140px; 
 		}
 		.pp {
-			width: 150px;
-			height: 150px;
+			width: clamp(110px, 13cqi, 150px);
+			height: clamp(110px, 13cqi, 150px);
 			border-radius: 50%;
 			margin-right: 25px;
 			object-fit: cover;
-			flex-shrink: 0;
+			flex-shrink: 0; 
 		}
 		.profile-text {
 			flex-grow: 1;
 		}
-		.profile-text h1 {
-			margin: 0 0 2px 0;
-			font-size: 28px;
-		}
-		.ipa_name {
-			margin: 0 0 8px 0;
-			font-size: 18px;
-			color: #444;
-		}
-		.bio-text {
-			text-align: justify;
-			line-height: 1.35;
-			margin: 0 0 8px 0;
-			font-size: 15px;
-		}
 
-		/* Phân chia bố cục cột linh hoạt chính */
 		.main-layout {
 			display: flex;
-			gap: 30px;
-			flex: 1;          /* Tự động chiếm không gian dọc còn lại */
-			min-height: 0;    /* QUAN TRỌNG: Cho phép các mục flex thu nhỏ bên dưới chiều cao văn bản */
-			margin-bottom: 5px;
+			gap: 3vw;
+			flex: 1;          
+			min-height: 0;    
+			margin-bottom: 2px;
 		}
 
-		/* Thanh bên Sidebar trái */
 		.sidebar {
-			width: 200px;
+			width: clamp(150px, 16cqi, 210px);
 			flex-shrink: 0;
 		}
-		.heading {
-			font-size: 18px;
-			margin: 10px 0 5px 0;
-			border-bottom: 1px solid #b5c4b5;
-			padding-bottom: 2px;
-		}
-		.sidebar p {
-			font-size: 15px;
-			margin: 5px 0;
-		}
 
-		/* Vùng nội dung chính bên phải */
 		.content-area {
 			flex-grow: 1;
 			display: flex;
@@ -100,50 +91,67 @@
 			min-height: 0;
 		}
 
-		/* Lưới phân chia thẻ dự án tự động giãn vừa khít màn hình */
 		.cards-grid {
-			display: flex;
-			gap: 25px;
-			height: 100%;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto auto;
+			gap: 20px 35px; /* Clean vertical and horizontal separation gaps */
+			width: 100%;
 			min-height: 0;
 		}
+		.card:nth-child(3),
+		.card:nth-child(4) {
+			margin-top: 25px; /* Adjust this pixel number up or down to vary the vertical spacing */
+		}
 		.card {
-			flex: 1;
 			display: flex;
 			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			gap: 4px;
+			width: 100%;
 			min-height: 0;
 		}
 		.card-title {
 			font-weight: bold;
-			font-size: 18px;
-			margin: 0 0 5px 0;
-			text-align: center;
+			font-size: clamp(14px, 1.3cqi, 17px);
+			margin: 0;
+			text-align: left;
+			width: 100%;
+		}
+		.card-body {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 12px;
+			width: 100%;
+			min-height: 0;
 		}
 		.card-desc {
+			flex: 1;
 			text-align: justify;
-			font-size: 14px;
+			font-size: clamp(12px, 1.1cqi, 14px);
 			line-height: 1.3;
-			margin: 0 0 10px 0;
+			margin: 0;
 		}
-
-		/* Khung PDF tự động điều chỉnh linh hoạt */
 		.pdf-wrapper {
 			position: relative;
-			width: 100%;
-			flex: 1;          /* Kéo giãn cửa sổ xem trước để lấp đầy không gian thẻ */
-			min-height: 0;    /* Ngăn trình xem PDF làm tràn bố cục */
-			border: none;
+			width: 110px;
+			height: 110px;
+			aspect-ratio: 1 / 1;  
+			flex-shrink: 0;
+			border: 1px solid #b5c4b5;
 		}
 		.pdf-frame {
 			width: 100%;
 			height: 100%;
 			border: none;
 		}
-
 		.fullscreen-button {
 			position: absolute;
-			top: 8px;
-			right: 8px;
+			top: 110px;
+			right: 17px;
 			z-index: 10;
 			background-color: rgba(0, 0, 0, 0.6);
 			color: white;
@@ -155,12 +163,18 @@
 			font-family: sans-serif;
 		}
 		.fullscreen {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			z-index: 9999;
+			position: fixed !important;
+			top: 0 !important;
+			left: 0 !important;
+			width: 100vw !important;
+			height: 100vh !important;
+			max-width: 100vw !important;
+			max-height: 100vh !important;
+			z-index: 99999 !important;
+			grid-column: 1 / -1 !important; /* Forces it to break out of the 4-column grid lanes */
+			grid-row: 1 / -1 !important;
+			margin: 0 !important;
+			transform: none !important;
 		}
 		.fullscreen .pdf-frame {
 			height: 100%;
@@ -173,17 +187,24 @@
 			text-align: center;
 		}
 
-		/* Chân trang */
 		.copyright {
 			text-align: center;
-			font-size: 13px;
+			font-size: 12px;
 			color: #555;
 			flex-shrink: 0;
-			padding: 5px 0;
+			padding: 4px 0;
+		}
+		@media (max-height: 780px) {
+			html, body {
+				overflow-y: auto;
+				height: auto;
+			}
+			.site-container {
+				height: auto;
+			}
 		}
 
-		/* Tùy chọn thu nhỏ cho điện thoại di động */
-		@media (max-width: 768px) {
+		@media (max-width: 650px) {
 			html, body {
 				overflow-y: auto;
 				height: auto;
@@ -195,10 +216,16 @@
 				flex-direction: column;
 				align-items: center;
 				text-align: center;
+				padding-right: 0;
+				margin-top: 25px;
+			}
+			.name-grid-container {
+				justify-content: center;
+				margin: 0 auto !important;
 			}
 			.pp {
 				margin-right: 0;
-				margin-bottom: 15px;
+				margin-bottom: 10px;
 			}
 			.main-layout {
 				flex-direction: column;
@@ -208,14 +235,22 @@
 				text-align: center;
 			}
 			.cards-grid {
+				grid-template-columns: 1fr;
+				grid-template-rows: auto;
+				gap: 25px;
+			}
+			.card {
+				align-items: center;
+			}
+			.card-title {
+				text-align: center;
+			}
+			.card-body {
 				flex-direction: column;
-				height: auto;
+				text-align: center;
 			}
 			.pdf-frame, .fullscreen-button {
 				display: none;
-			}
-			.pdf-wrapper {
-				height: auto;
 			}
 			.mobile-pdf-link {
 				display: block;
@@ -227,26 +262,28 @@
 
 <div class="site-container">
 
-	<!-- Header Profile Section -->
 	<header class="profile-section">
 		<a href="html_images/profilepic.jpg">
-			<img class="pp" src="html_images/profilepic.jpg" alt="Khang Đinh ăn cơm tấm từ quán vỉa hè trong Quận 3, Hồ Chì Minh ở Việt Nam.">
+			<img class="pp" src="html_images/profilepic.jpg" alt="Khang Đinh ăn cơm tấm.">
 		</a>
 		<div class="profile-text">
-			<h1>Khang Đinh</h1>
-			<p class="ipa_name">[kxɑŋ] [ɗɪŋ̆]</p>
-			<p style="font-size: 18px; margin: 0 0 8px 0;">Sinh Viên Tiến Sĩ, <a href="https://linguistics.ucla.edu/">Ngành Ngôn Ngữ Học UCLA</a></p>
+			<div class="name-grid-container" style="display: grid; grid-template-columns: auto auto; width: fit-content; gap: 0 12px; margin: 0;">
+				<h1 style="line-height: 1.1; white-space: nowrap;">Khang</h1>
+				<h1 style="line-height: 1.1; white-space: nowrap;">Đinh</h1>
+				<p class="ipa_name" style="padding-top: 2px; white-space: nowrap;">[kxaŋ]</p>
+				<p class="ipa_name" style="padding-top: 2px; white-space: nowrap;">[ɗɪŋ̆]</p>
+			</div>
+			
+			<p class="sub-title">Sinh Viên Tiến Sĩ, <a href="https://ucla.edu">Ngành Ngôn Ngữ Học UCLA</a></p>
 			
 			<p class="bio-text">Giọng nói được dùng như là một diễn suất để chuyển tải những ngụ ý có tính biểu tượng, kinh nghiệm, và danh tính như là âm thanh qua thời gian. Vì lý do này, tôi cực kỳ thắc mắc làm sao những cái yếu tố của tiếng nói có thể được trình bày một cách có hệ thống nhưng vẫn uyển chuyển. Như một cách thức, tôi được gợi cảm hứng bởi sự thích ứng mà hiển hiện từ những cấu trúc song song trong âm nhạc và ngôn ngữ. Trọng tâm của việc tôi làm là khái niệm làm sao những cấu trúc ngôn ngữ khác nhau có thể làm sáng tỏ sự linh hoạt mà vẫn tuân theo văn phạm.</p>
 			
-			<p class="bio-text">Tôi có bằng cử nhân từ trường đại học UC Santa Barbara (UCSB) trong năm 2025. Ở UCSB, tôi đã làm việc trong nhiều đề án với những đề tài như âm điệu ngôn ngữ đa dạng, những từ biểu ngữ trong tiếng Việt, sự tương tác giữa thanh điệu:giai điệu bài hát, và ngôn ngữ của chính trị gia trên mạng xã hội. Xin cứ tự nhiên nhắn tin cho tôi nếu bạn muốn thảo luận về bất cứ ý kiến nào! <br> Những câu hỏi này bao gồm một lĩnh vực quá bao la đến nỗi chúng ta nên khuyến khích sự hợp tác.</p>
+			<p class="bio-text">Tôi có bằng cử nhân từ trường đại học UC Santa Barbara (UCSB) trong năm 2025. Ở UCSB, tôi đã làm việc trong nhiều đề án với những đề tài như âm điệu ngôn ngữ đa dạng, những từ biểu ngữ trong tiếng Việt, sự tương tác giữa thanh điệu:giai điệu bài hát, và ngôn ngữ của chính trị gia trên mạng xã hội. Xin cứ tự nhiên nhắn tin cho tôi nếu bạn muốn thảo luận về bất cứ ý kiến nào! </p>
 		</div>
 	</header>
 
-	<!-- Main Structural Split Columns -->
 	<div class="main-layout">
 		
-		<!-- Left Sidebar Profile Info -->
 		<aside class="sidebar">
 			<h2 class="heading">Những Sở Thích Nghiên Cứu:</h2>
 			<p>Ngữ âm</p>
@@ -256,57 +293,112 @@
 			
 			<h2 class="heading">Liên hệ:</h2>
 			<p>Email: <a href="mailto:dinhuistics@ucla.edu">dinhuistics@ucla.edu</a></p>
-			<p>Zoom: <a href="https://ucla.zoom.us/my/khang">https://ucla.zoom.us/my/khang</a></p>
+			<p>Zoom: <a href="https://zoom.us">https://zoom.us</a></p>
 		</aside>
-
-		<!-- Right Side Dynamic Cards Layout Area -->
+		
 		<main class="content-area">
 			<div class="cards-grid">
 				
-				<!-- Card 1: V-Pop -->
+				<!-- Card 1 -->
 				<div class="card">
 					<p class="card-title">Tông Việt ~ Điệu Việt</p>
-					<p class="card-desc">Tôi đã phân tích mối quan hệ giữa thanh điệu của những lời bài hát và giai điệu tương ứng của nó trong những nhạc V-Pop.</p> 
-					<div class="pdf-wrapper" id="pdfWrapper1">
-						<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper1')">⛶ Toàn màn</button>
-						<iframe class="pdf-frame" id="pdfFrame1" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" scrolling="yes" allowfullscreen>Trình duyệt này không hỗ trợ hiển thị file PDF. Vui lòng tải về để xem:
-						<a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"> Tải về PDF</a>
-						</iframe>
-						<a class="mobile-pdf-link" href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" target="_blank">📄 Xem PDF</a>
+					<div class="card-body">
+						<div class="pdf-wrapper" id="pdfWrapper1">
+							<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper1')">⛶ Toàn màn</button>
+							<iframe class="pdf-frame" id="pdfFrame1" src="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" scrolling="yes" allowfullscreen>Trình duyệt này không hỗ trợ hiển thị file PDF. Vui lòng tải về để xem:
+							<a href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf"> Tải về PDF</a>
+							</iframe>
+							<a class="mobile-pdf-link" href="html_pdfs/(Đinh 2024) Register complex transfer in the lexical tone-tune interface in v-pop.pdf" target="_blank">📄 View PDF</a>
+						</div>
+						<p class="card-desc">Tôi đã phân tích mối quan hệ về mặt âm vị học và ngữ âm học giữa thanh điệu của những lời bài hát và giai điệu tương ứng của nó trong 45 bài hát nhạc pop Việt Nam.</p>
 					</div>
 				</div>
 
-				<!-- Card 2: CV Sơ yếu lý lịch -->
+				<!-- Card 2 -->
 				<div class="card">
-					<p class="card-title">Sơ yếu lý lịch</p>
-					<p class="card-desc">Một danh sách đầy đủ về những công việc của tôi với phương tiện truyền thông có thể được tìm đây qua những liên kết.</p>
-					<div class="pdf-wrapper" id="pdfWrapper2">
-						<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper2')">⛶ Toàn màn</button>
-						<iframe class="pdf-frame" id="pdfFrame2" src="html_pdfs/CV_Filename_Placeholder.pdf" scrolling="yes" allowfullscreen>Trình duyệt này không hỗ trợ hiển thị file PDF. Vui lòng tải về để xem:
-						<a href="html_pdfs/CV_Filename_Placeholder.pdf"> Tải về CV PDF</a>
-						</iframe>
-						<a class="mobile-pdf-link" href="html_pdfs/CV_Filename_Placeholder.pdf" target="_blank">📄 Xem CV PDF</a>
+					<p class="card-title">Sự hình thành danh mục từ tông Việt trong nhạc pop Việt Nam</p>
+					<div class="card-body">
+						<div class="pdf-wrapper" id="pdfWrapper2">
+							<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper2')">⛶ Toàn màn</button>
+							<iframe class="pdf-frame" id="pdfFrame2" src="html_pdfs/LabPhon 20 Poster _ Đinh.pdf" scrolling="yes" allowfullscreen>Trình duyệt này không hỗ trợ hiển thị file PDF. Vui lòng tải về để xem:
+							<a href="html_pdfs/LabPhon 20 Poster _ Đinh.pdf"> Download PDF</a>
+							</iframe>
+							<a class="mobile-pdf-link" href="html_pdfs/LabPhon 20 Poster _ Đinh.pdf" target="_blank">📄 Tải về PDF</a>
+						</div>
+						<p class="card-desc">Một sự mở rộng của giả thuyết "Tông Việt ~ Điệu Việt" với (1) các số liệu thống kê chứng minh rằng có thể dự đoán kiểu tương tác giữa thanh điệu và giai điệu dựa trên thanh điệu từ vựng, và (2) dữ liệu âm học cho thấy sự hiện diện của các tín hiệu ngữ âm khác ngoài cao độ trong thanh điệu tiếng Việt.</p>
+					</div>
+				</div>
+
+				<!-- Card 3 -->
+				<div class="card">
+					<p class="card-title">Phân chia âm tiết trong nhạc pop Mã Lai (bản mở rộng)</p>
+					<div class="card-body">
+						<div class="pdf-wrapper" id="pdfWrapper3">
+							<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper3')">⛶ Toàn màn</button>
+							<iframe class="pdf-frame" id="pdfFrame3" src="html_pdfs/LabPhon 20 Slides _ Siah and Đinh.pdf" scrolling="yes" allowfullscreen>Trình duyệt này không hỗ trợ hiển thị file PDF. Vui lòng tải về để xem:
+							<a href="html_pdfs/LabPhon 20 Slides _ Siah and Đinh.pdf"> Download PDF</a>
+							</iframe>
+							<a class="mobile-pdf-link" href="html_pdfs/LabPhon 20 Slides _ Siah and Đinh.pdf" target="_blank">📄 Tải về PDF</a>
+						</div>
+						<p class="card-desc">Một sự mở rộng của dự án nghiên cứu về ca khúc nhạc pop tiếng Mã Lai cùng Jian-Leat Siah, trong đó phác thảo các tham số âm nhạc-ngôn ngữ học đa dạng xuất hiện ở các âm nguyên âm (vocoid) tiếng Mã Lai, chẳng hạn như việc gán nốt nhạc tương ứng, sự tương thích về thời lượng dựa trên quy mô âm tiết, và hiện tượng lướt âm (gliding) liên quan đến ngưỡng quy mô âm tiết.</p>
+					</div>
+				</div>
+					
+				<!-- Card 4 -->
+				<div class="card">
+					<p class="card-title">Phân chia âm tiết trong nhạc pop tiếng Mã Lai</p>
+					<div class="card-body">
+						<div class="pdf-wrapper" id="pdfWrapper4">
+							<button class="fullscreen-button" onclick="enterFullscreen('pdfWrapper4')">⛶ Toàn màn</button>
+							<iframe class="pdf-frame" id="pdfFrame4" src="html_pdfs/LSA 2026 Poster _ Siah and Đinh.pdf" scrolling="yes" allowfullscreen>Trình duyệt này không hỗ trợ hiển thị file PDF. Vui lòng tải về để xem:
+							<a href="html_pdfs/LSA 2026 Poster _ Siah and Đinh.pdf"> Download PDF</a>
+							</iframe>
+							<a class="mobile-pdf-link" href="html_pdfs/LSA 2026 Poster _ Siah and Đinh.pdf" target="_blank">📄 Tải về PDF</a>
+						</div>
+						<p class="card-desc">Thông qua sự hợp tác với Jian-Leat Siah, dự án này nghiên cứu các âm lướt (glides) trong lời bài hát nhạc pop tiếng Mã Lai, coi đó là bằng chứng cho thấy các cụm phụ âm đầu phức hợp thực sự hiện diện trong âm tiết tiếng Mã Lai (trái ngược với các phân tích trước đây).</p>
 					</div>
 				</div>
 
 			</div>
 		</main>
+
 	</div>
 
-	<!-- Page Bottom Footer Section -->
 	<footer class="copyright">
 		&copy; 2026 Khang Đinh
 	</footer>
 
 </div>
 
+	<div style="position: absolute; top: 15px; right: 25px; z-index: 999;">
+	  <p style="font-size: 12px;"><a href="index.html">English</a> | <a href="dinhuistics.html">Tiếng Việt</a></p>
+	</div>
+
 <script>
 	function enterFullscreen(id) {
 		var el = document.getElementById(id);
+		
+		// Finds the button right next to the active viewport stack
+		var btn = el.parentNode.querySelector('.fullscreen-button');
+		
 		if (el.classList.contains('fullscreen')) {
 			el.classList.remove('fullscreen');
+			
+			// Dynamic label text restore when returning to the regular grid layout
+			if (document.documentElement.lang === "vi") {
+				btn.innerHTML = "⛶ Toàn màn";
+			} else {
+				btn.innerHTML = "⛶ Fullscreen";
+			}
 		} else {
 			el.classList.add('fullscreen');
+			
+			// Dynamic label text switch upon entering fullscreen mode
+			if (document.documentElement.lang === "vi") {
+				btn.innerHTML = "🗙 Thoát toàn màn hình";
+			} else {
+				btn.innerHTML = "🗙 Exit Fullscreen";
+			}
 		}
 	}
 </script>
